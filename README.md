@@ -30,6 +30,14 @@ pytest tests/selenium -v
 
 `tests/selenium/test_golden_smoke.py` is only a golden-version sanity check. The EP, BVA, and Decision Table research suites should be created separately after the requirements are reviewed and frozen.
 
+### Run the Registration BVA suite
+
+```powershell
+pytest tests/bva/test_registration_bva.py -v
+```
+
+The 18 frozen BVA cases are stored in `test-design/bva-registration.csv`.
+
 ## Deploy to Vercel
 
 Import the repository with the project root unchanged. `vercel.json` disables framework builds and serves the static files from `app/`.
