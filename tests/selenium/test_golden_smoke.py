@@ -54,6 +54,12 @@ def test_three_golden_happy_paths(driver):
     assert "900.000" in shipping_result
 
     driver.find_element(By.CSS_SELECTOR, '[data-target="loan"]').click()
+    assert driver.current_url.endswith("#loan")
+    wait.until(EC.visibility_of_element_located((By.ID, "loan")))
+    assert not driver.find_element(By.ID, "shipping").is_displayed()
+    assert driver.find_element(By.CSS_SELECTOR, '[data-target="loan"]').get_attribute(
+        "aria-current"
+    ) == "page"
     driver.find_element(By.ID, "loan-age").send_keys("21")
     driver.find_element(By.ID, "loan-income").send_keys("15000000")
     driver.find_element(By.ID, "loan-credit-score").send_keys("650")
