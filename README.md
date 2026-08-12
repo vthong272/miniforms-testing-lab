@@ -17,26 +17,37 @@ Open `http://localhost:8000/`.
 npm test
 ```
 
-## Run Selenium smoke tests
+## Run the frozen Selenium suites on the golden version
 
-Keep the local server running in one terminal. In another terminal:
+The pytest fixture starts the golden application automatically on
+`http://127.0.0.1:8765/`, launches one headless Chrome session, and shuts both
+down after the run:
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements-dev.txt
-pytest tests/selenium -v
+.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -v
 ```
 
-`tests/selenium/test_golden_smoke.py` is only a golden-version sanity check. The EP, BVA, and Decision Table research suites should be created separately after the requirements are reviewed and frozen.
+The Frozen v1.0 manifest contains exactly 110 unique cases:
 
-### Run the Registration BVA suite
+- EP: 30 cases
+- BVA: 51 cases
+- Decision Table Testing: 29 cases
+
+Run one technique independently with `-m ep`, `-m bva`, or `-m dtt`. Every
+case uses its frozen test ID in pytest output. To run against another golden
+deployment, set `MINIFORMS_URL` before invoking pytest.
+
+### Legacy Registration-only BVA suite
 
 ```powershell
 pytest tests/bva/test_registration_bva.py -v
 ```
 
-The 18 frozen BVA cases are stored in `test-design/bva-registration.csv`.
+This older 18-case file remains for traceability. The authoritative Frozen
+v1.0 research manifest is `tests/frozen_cases.py` and covers all three forms.
 
 ## Deploy to Vercel
 
