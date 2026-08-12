@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MiniForms controlled benchmark for EP, BVA, and Decision Table Testing." />
+    <title>MiniForms Testing Lab</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Study navigation">
+        <a class="brand" href="#registration" aria-label="MiniForms home">
+          <span class="brand-mark" aria-hidden="true">MF</span>
+          <span><strong>MiniForms</strong><small>Testing Lab</small></span>
+        </a>
+
+        <div class="study-label">Controlled benchmark</div>
+        <nav class="form-nav" aria-label="Business forms">
+          <button class="nav-item is-active" type="button" data-target="registration" aria-current="page">
+            <span class="nav-number">01</span>
+            <span><strong>Registration</strong><small>5 validation rules</small></span>
+          </button>
+          <button class="nav-item" type="button" data-target="shipping">
+            <span class="nav-number">02</span>
+            <span><strong>Shipping &amp; discount</strong><small>5 calculation rules</small></span>
+          </button>
+          <button class="nav-item" type="button" data-target="loan">
+            <span class="nav-number">03</span>
+            <span><strong>Loan eligibility</strong><small>5 decision rules</small></span>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><strong>Golden version</strong><small>Expected behavior enabled</small></div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Software testing research</p>
+            <h1>Web-form business logic</h1>
+            <p class="header-copy">A stable test target for comparing EP, BVA, and Decision Table test suites.</p>
+          </div>
+          <div class="tech-badge" aria-label="Application technology">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </header>
+
+        <section id="registration" class="form-panel is-active" aria-labelledby="registration-title">
+          <div class="panel-heading">
+            <div><span class="panel-index">Form 01</span><h2 id="registration-title">User registration</h2></div>
+            <p>Validate identity and account credentials against five independent rules.</p>
+          </div>
+          <div class="panel-layout">
+            <form id="registration-form" class="business-form" novalidate>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="reg-username">Username</label>
+                  <input id="reg-username" name="username" type="text" autocomplete="username" placeholder="5–15 characters" />
+                </div>
+                <div class="field">
+                  <label for="reg-email">Email address</label>
+                  <input id="reg-email" name="email" type="text" autocomplete="email" placeholder="name@example.com" />
+                </div>
+                <div class="field field-small">
+                  <label for="reg-age">Age</label>
+                  <input id="reg-age" name="age" type="number" inputmode="numeric" placeholder="18–60" />
+                </div>
+                <div class="field">
+                  <label for="reg-password">Password</label>
+                  <input id="reg-password" name="password" type="password" autocomplete="new-password" placeholder="8–20 characters" />
+                </div>
+                <div class="field">
+                  <label for="reg-confirm-password">Confirm password</label>
+                  <input id="reg-confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Repeat password" />
+                </div>
+              </div>
+              <button id="registration-submit" class="primary-button" type="submit">Validate registration <span aria-hidden="true">→</span></button>
+            </form>
+            <aside class="rules-card" aria-labelledby="registration-rules">
+              <h3 id="registration-rules">Acceptance rules</h3>
+              <ol><li>Username: 5–15 characters</li><li>Valid email format</li><li>Age: 18–60 inclusive</li><li>Password: 8–20 characters</li><li>Passwords must match</li></ol>
+            </aside>
+          </div>
+          <div id="registration-result" class="result-box is-empty" role="status" aria-live="polite">Submit the form to see the validation result.</div>
+        </section>
+
+        <section id="shipping" class="form-panel" aria-labelledby="shipping-title" hidden>
+          <div class="panel-heading">
+            <div><span class="panel-index">Form 02</span><h2 id="shipping-title">Shipping &amp; discount</h2></div>
+            <p>Calculate the highest eligible discount, delivery charge, and final payable amount.</p>
+          </div>
+          <div class="panel-layout">
+            <form id="shipping-form" class="business-form" novalidate>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="ship-customer-type">Customer type</label>
+                  <select id="ship-customer-type" name="customerType"><option value="regular">Regular</option><option value="vip">VIP</option></select>
+                </div>
+                <div class="field">
+                  <label for="ship-order-value">Order value (VND)</label>
+                  <input id="ship-order-value" name="orderValue" type="num…732 tokens truncated…003eMonthly income (VND)</label><input id="loan-income" name="monthlyIncome" type="number" min="0" step="100000" placeholder="e.g. 15000000" /></div>
+                <div class="field"><label for="loan-credit-score">Credit score</label><input id="loan-credit-score" name="creditScore" type="number" placeholder="650–850" /></div>
+                <div class="field"><label for="loan-employment">Employment status</label><select id="loan-employment" name="employmentStatus"><option value="employed">Employed</option><option value="unemployed">Unemployed</option></select></div>
+                <div class="field"><label for="loan-requested">Requested loan (VND)</label><input id="loan-requested" name="requestedLoan" type="number" min="0" step="100000" placeholder="Maximum 10× income" /></div>
+              </div>
+              <button id="loan-submit" class="primary-button" type="submit">Evaluate application <span aria-hidden="true">→</span></button>
+            </form>
+            <aside class="rules-card" aria-labelledby="loan-rules">
+              <h3 id="loan-rules">Eligibility rules</h3>
+              <ol><li>Age: 21–60 inclusive</li><li>Income: ≥15M VND</li><li>Credit score: 650–850</li><li>Applicant is employed</li><li>Loan: positive and ≤10× income</li></ol>
+            </aside>
+          </div>
+          <div id="loan-result" class="result-box is-empty" role="status" aria-live="polite">Submit the form to see the eligibility decision.</div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
