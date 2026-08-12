@@ -102,7 +102,37 @@
                 </div>
                 <div class="field">
                   <label for="ship-order-value">Order value (VND)</label>
-                  <input id="ship-order-value" name="orderValue" type="num…732 tokens truncated…003eMonthly income (VND)</label><input id="loan-income" name="monthlyIncome" type="number" min="0" step="100000" placeholder="e.g. 15000000" /></div>
+                  <input id="ship-order-value" name="orderValue" type="number" min="0" step="1000" placeholder="e.g. 1000000" />
+                </div>
+                <div class="field">
+                  <label for="ship-region">Shipping region</label>
+                  <select id="ship-region" name="region"><option value="local">Local</option><option value="remote">Remote</option></select>
+                </div>
+                <div class="field">
+                  <label for="ship-coupon-status">Coupon status</label>
+                  <select id="ship-coupon-status" name="couponStatus"><option value="none">No coupon</option><option value="valid">Valid coupon</option><option value="invalid">Invalid coupon</option></select>
+                </div>
+              </div>
+              <button id="shipping-submit" class="primary-button" type="submit">Calculate order <span aria-hidden="true">→</span></button>
+            </form>
+            <aside class="rules-card" aria-labelledby="shipping-rules">
+              <h3 id="shipping-rules">Calculation rules</h3>
+              <ol><li>Order value must be positive</li><li>VIP + ≥1M: 10% discount</li><li>Valid coupon + ≥500K: 5%</li><li>Only highest discount applies</li><li>Local + ≥800K: free shipping</li></ol>
+            </aside>
+          </div>
+          <div id="shipping-result" class="result-box is-empty" role="status" aria-live="polite">Submit the form to see the order calculation.</div>
+        </section>
+
+        <section id="loan" class="form-panel" aria-labelledby="loan-title" hidden>
+          <div class="panel-heading">
+            <div><span class="panel-index">Form 03</span><h2 id="loan-title">Loan eligibility</h2></div>
+            <p>Evaluate a loan request using five combined eligibility conditions.</p>
+          </div>
+          <div class="panel-layout">
+            <form id="loan-form" class="business-form" novalidate>
+              <div class="field-grid">
+                <div class="field field-small"><label for="loan-age">Age</label><input id="loan-age" name="age" type="number" placeholder="21–60" /></div>
+                <div class="field"><label for="loan-income">Monthly income (VND)</label><input id="loan-income" name="monthlyIncome" type="number" min="0" step="100000" placeholder="e.g. 15000000" /></div>
                 <div class="field"><label for="loan-credit-score">Credit score</label><input id="loan-credit-score" name="creditScore" type="number" placeholder="650–850" /></div>
                 <div class="field"><label for="loan-employment">Employment status</label><select id="loan-employment" name="employmentStatus"><option value="employed">Employed</option><option value="unemployed">Unemployed</option></select></div>
                 <div class="field"><label for="loan-requested">Requested loan (VND)</label><input id="loan-requested" name="requestedLoan" type="number" min="0" step="100000" placeholder="Maximum 10× income" /></div>
