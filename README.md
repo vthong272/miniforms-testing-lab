@@ -52,3 +52,21 @@ v1.0 research manifest is `tests/frozen_cases.py` and covers all three forms.
 ## Deploy to Vercel
 
 Import the repository with the project root unchanged. `vercel.json` disables framework builds and serves the static files from `app/`.
+
+## Reproduce the mutation experiment
+
+Frozen v1.0 is protected by a recorded SHA-256 fingerprint. Generate and verify
+the 18 single-fault mutants, then run the three suites against golden and every
+mutant:
+
+```powershell
+.venv\Scripts\python.exe -m scripts.generate_mutants
+.venv\Scripts\python.exe -m scripts.verify_mutants
+.venv\Scripts\python.exe -m scripts.run_experiment
+.venv\Scripts\python.exe -m scripts.analyze_results <result-directory>
+```
+
+The experiment runner creates a new result directory, checks the frozen hash,
+requires all golden tests to pass, and classifies a mutant as killed only when
+the complete suite has assertion failures but no errors or skipped tests. It
+refuses to reuse a non-empty output directory.

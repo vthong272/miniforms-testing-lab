@@ -69,6 +69,26 @@ def main():
     (args.result_dir / "metrics.json").write_text(
         json.dumps(metrics, indent=2) + "\n", encoding="utf-8"
     )
+    with (args.result_dir / "metrics.csv").open("w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=[
+            "Suite", "Test_cases", "Killed", "Valid_mutants", "DDR_percent", "Efficiency"
+        ])
+        writer.writeheader()
+        for suite, values in metrics["suites"].items():
+            writer.writerow({
+                "Suite": suite, "Test_cases": values["test_cases"], "Killed": values["killed"],
+                "Valid_mutants": values["valid_mutants"], "DDR_percent": values["ddr_percent"],
+                "Efficiency": values["efficiency"],
+            })
+    with (args.result_dir / "category-ddr.csv").open("w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=["Suite", "Category", "Killed", "Valid", "DDR_percent"])
+        writer.writeheader()
+        for suite, values in metrics["suites"].items():
+            for category, category_values in values["by_category"].items():
+                writer.writerow({"Suite": suite, "Category": category, **{
+                    "Killed": category_values["killed"], "Valid": category_values["valid"],
+                    "DDR_percent": category_values["ddr_percent"],
+                }})
     print(json.dumps(metrics, indent=2))
 
 
