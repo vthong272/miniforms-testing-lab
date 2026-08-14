@@ -1,0 +1,4 @@
+﻿Suite,Test_cases,Killed,Valid_mutants,DDR_percent,Efficiency
+EP,30,10,18,55.56,0.3333
+BVA,51,9,18,50.0,0.1765
+DTT,29,7,18,38.89,0.2414

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="30" time="43.285" timestamp="2026-08-14T15:10:55.170812+07:00" hostname="DESKTOP-83RF8U8"><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-01]" time="3.166" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-02]" time="1.048"><failure message="AssertionError: EP-REG-02: expected Rejected, got 'Accepted — registration data satisfies all five rules.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="2b0264cf0b8d6c864d41eb11f6b52b93")&gt;
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example.com', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.ep
+    @pytest.mark.parametrize("case", EP_CASES, ids=lambda case: case["test_id"])
+    def test_ep_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example.com', 'expected_result': 'Rejected', ...}
+result_text = 'Accepted — registration data satisfies all five rules.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: EP-REG-02: expected Rejected, got 'Accepted — registration data satisfies all five rules.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-03]" time="0.790"><failure message="AssertionError: EP-REG-03: expected Rejected, got 'Accepted — registration data satisfies all five rules.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="2b0264cf0b8d6c864d41eb11f6b52b93")&gt;
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example.com', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.ep
+    @pytest.mark.parametrize("case", EP_CASES, ids=lambda case: case["test_id"])
+    def test_ep_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example.com', 'expected_result': 'Rejected', ...}
+result_text = 'Accepted — registration data satisfies all five rules.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: EP-REG-03: expected Rejected, got 'Accepted — registration data satisfies all five rules.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-04]" time="0.582" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-05]" time="1.063" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-06]" time="0.568" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-07]" time="0.664" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-08]" time="0.521" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-09]" time="0.668" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-REG-10]" time="0.473" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-01]" time="1.001" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-02]" time="0.855" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-03]" time="0.498" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-04]" time="0.991" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-05]" time="0.396" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-06]" time="1.002" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-07]" time="0.927" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-08]" time="0.511" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-SHIP-09]" time="0.945" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-01]" time="0.868" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-02]" time="0.710" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-03]" time="1.147" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-04]" time="1.343" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-05]" time="2.013" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-06]" time="1.848" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-07]" time="0.981" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-08]" time="1.753" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-09]" time="1.565" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-10]" time="0.779" /><testcase classname="tests.selenium.test_frozen_golden" name="test_ep_case_passes_on_golden[EP-LOAN-11]" time="13.235" /></testsuite></testsuites>

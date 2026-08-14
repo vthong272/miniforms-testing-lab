@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="29" time="34.125" timestamp="2026-08-14T15:06:40.918389+07:00" hostname="DESKTOP-83RF8U8"><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-01]" time="2.320" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-02]" time="1.065" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-03]" time="0.604"><failure message="AssertionError: DT-REG-03: expected Rejected, got 'Accepted — registration data satisfies all five rules.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="d18a4d074054dc631cb57084c7abe856")&gt;
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'confirm_password': 'Secret123', 'email': 'user@example', 'expected_result': 'Rejected', ...}
+result_text = 'Accepted — registration data satisfies all five rules.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: DT-REG-03: expected Rejected, got 'Accepted — registration data satisfies all five rules.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-04]" time="1.061" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-05]" time="0.961" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-06]" time="0.970" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-01]" time="0.470" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-02]" time="0.922" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-03]" time="0.591" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-04]" time="0.519" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-05]" time="1.469" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-06]" time="0.924" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-07]" time="0.861" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-08]" time="0.878" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-09]" time="0.969" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-10]" time="0.935" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-11]" time="0.843" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-12]" time="0.820" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-13]" time="1.383" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-14]" time="1.430" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-15]" time="1.798" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-16]" time="1.806" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-17]" time="0.798" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-01]" time="1.069" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-02]" time="0.849" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-03]" time="1.413" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-04]" time="1.280" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-05]" time="0.700" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-06]" time="3.957" /></testsuite></testsuites>

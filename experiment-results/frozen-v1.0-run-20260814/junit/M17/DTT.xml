@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="29" time="33.632" timestamp="2026-08-14T15:20:03.365536+07:00" hostname="DESKTOP-83RF8U8"><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-01]" time="2.517" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-02]" time="0.856" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-03]" time="0.499" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-04]" time="1.302" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-05]" time="0.602" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-REG-06]" time="0.610" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-01]" time="0.408" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-02]" time="0.929" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-03]" time="0.954" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-04]" time="0.906" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-05]" time="1.470" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-06]" time="0.894" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-07]" time="0.902" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-08]" time="0.948" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-09]" time="1.539" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-10]" time="0.959" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-11]" time="0.966" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-12]" time="1.007" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-13]" time="1.037" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-14]" time="1.483" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-15]" time="0.719" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-16]" time="1.327" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-SHIP-17]" time="0.962" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-01]" time="0.960" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-02]" time="1.253" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-03]" time="1.110" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-04]" time="1.067" /><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-05]" time="1.468"><failure message="AssertionError: DT-LOAN-05: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="88798d18069363e5a8a7969d2757cf9e")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'unemployed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'unemployed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: DT-LOAN-05: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_dtt_case_passes_on_golden[DT-LOAN-06]" time="3.268" /></testsuite></testsuites>

@@ -1,0 +1,117 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m bva -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M18\BVA.xml
+return_code: 1
+elapsed_seconds: 48.510
+
+STDOUT
+.............................................FF...F                      [100%]
+================================== FAILURES ===================================
+_______________ test_bva_case_passes_on_golden[BVA-LOAN-POS-01] _______________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")>
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+>           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-POS-01: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError
+_______________ test_bva_case_passes_on_golden[BVA-LOAN-POS-02] _______________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")>
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+>           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-POS-02: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError
+_______________ test_bva_case_passes_on_golden[BVA-LOAN-MAX-03] _______________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")>
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+>           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-MAX-03: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M18\BVA.xml -
+=========================== short test summary info ===========================
+FAILED tests/selenium/test_frozen_golden.py::test_bva_case_passes_on_golden[BVA-LOAN-POS-01]
+FAILED tests/selenium/test_frozen_golden.py::test_bva_case_passes_on_golden[BVA-LOAN-POS-02]
+FAILED tests/selenium/test_frozen_golden.py::test_bva_case_passes_on_golden[BVA-LOAN-MAX-03]
+3 failed, 48 passed, 59 deselected in 47.55s
+
+STDERR

@@ -1,0 +1,10 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m bva -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M17\BVA.xml
+return_code: 0
+elapsed_seconds: 48.118
+
+STDOUT
+...................................................                      [100%]
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M17\BVA.xml -
+51 passed, 59 deselected in 47.19s
+
+STDERR

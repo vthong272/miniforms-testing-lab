@@ -1,0 +1,161 @@
+{
+  "valid_mutants": 18,
+  "suites": {
+    "EP": {
+      "test_cases": 30,
+      "killed": 10,
+      "valid_mutants": 18,
+      "ddr_percent": 55.56,
+      "efficiency": 0.3333,
+      "by_category": {
+        "Partition": {
+          "killed": 5,
+          "valid": 6,
+          "ddr_percent": 83.33
+        },
+        "Boundary": {
+          "killed": 0,
+          "valid": 6,
+          "ddr_percent": 0.0
+        },
+        "Decision-rule": {
+          "killed": 5,
+          "valid": 6,
+          "ddr_percent": 83.33
+        }
+      }
+    },
+    "BVA": {
+      "test_cases": 51,
+      "killed": 9,
+      "valid_mutants": 18,
+      "ddr_percent": 50.0,
+      "efficiency": 0.1765,
+      "by_category": {
+        "Partition": {
+          "killed": 0,
+          "valid": 6,
+          "ddr_percent": 0.0
+        },
+        "Boundary": {
+          "killed": 6,
+          "valid": 6,
+          "ddr_percent": 100.0
+        },
+        "Decision-rule": {
+          "killed": 3,
+          "valid": 6,
+          "ddr_percent": 50.0
+        }
+      }
+    },
+    "DTT": {
+      "test_cases": 29,
+      "killed": 7,
+      "valid_mutants": 18,
+      "ddr_percent": 38.89,
+      "efficiency": 0.2414,
+      "by_category": {
+        "Partition": {
+          "killed": 1,
+          "valid": 6,
+          "ddr_percent": 16.67
+        },
+        "Boundary": {
+          "killed": 0,
+          "valid": 6,
+          "ddr_percent": 0.0
+        },
+        "Decision-rule": {
+          "killed": 6,
+          "valid": 6,
+          "ddr_percent": 100.0
+        }
+      }
+    }
+  },
+  "overlap": {
+    "EP-BVA": {
+      "count": 2,
+      "mutants": [
+        "M06",
+        "M18"
+      ],
+      "jaccard_percent": 11.76
+    },
+    "EP-DTT": {
+      "count": 5,
+      "mutants": [
+        "M05",
+        "M06",
+        "M12",
+        "M17",
+        "M18"
+      ],
+      "jaccard_percent": 41.67
+    },
+    "BVA-DTT": {
+      "count": 3,
+      "mutants": [
+        "M06",
+        "M11",
+        "M18"
+      ],
+      "jaccard_percent": 23.08
+    }
+  },
+  "unique": {
+    "EP": {
+      "count": 5,
+      "mutants": [
+        "M02",
+        "M07",
+        "M08",
+        "M13",
+        "M14"
+      ]
+    },
+    "BVA": {
+      "count": 6,
+      "mutants": [
+        "M03",
+        "M04",
+        "M09",
+        "M10",
+        "M15",
+        "M16"
+      ]
+    },
+    "DTT": {
+      "count": 1,
+      "mutants": [
+        "M01"
+      ]
+    }
+  },
+  "combined": {
+    "killed": 18,
+    "valid_mutants": 18,
+    "ddr_percent": 100.0,
+    "mutants": [
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M06",
+      "M07",
+      "M08",
+      "M09",
+      "M10",
+      "M11",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M16",
+      "M17",
+      "M18"
+    ]
+  }
+}

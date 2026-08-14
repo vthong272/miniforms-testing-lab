@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="51" time="47.553" timestamp="2026-08-14T15:20:51.518209+07:00" hostname="DESKTOP-83RF8U8"><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-01]" time="2.578" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-02]" time="0.500" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-03]" time="0.400" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-04]" time="0.555" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-05]" time="1.154" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-06]" time="0.552" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-01]" time="0.496" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-02]" time="0.558" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-03]" time="1.059" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-04]" time="0.992" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-05]" time="0.511" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-06]" time="1.077" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-01]" time="0.447" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-02]" time="1.022" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-03]" time="0.480" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-04]" time="0.571" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-05]" time="0.545" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-06]" time="0.550" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-01]" time="0.569" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-02]" time="0.527" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-03]" time="0.536" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-01]" time="0.999" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-02]" time="0.875" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-03]" time="0.511" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-01]" time="1.413" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-02]" time="0.951" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-03]" time="0.904" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-01]" time="1.623" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-02]" time="1.381" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-03]" time="0.812" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-01]" time="0.850" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-02]" time="0.791" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-03]" time="0.762" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-04]" time="0.539" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-05]" time="1.232" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-06]" time="1.183" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-01]" time="0.681" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-02]" time="1.017" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-03]" time="1.016" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-01]" time="1.613" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-02]" time="1.105" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-03]" time="0.708" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-04]" time="0.578" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-05]" time="0.666" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-06]" time="0.522" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-01]" time="1.067"><failure message="AssertionError: BVA-LOAN-POS-01: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-POS-01: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-02]" time="0.989"><failure message="AssertionError: BVA-LOAN-POS-02: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-POS-02: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-03]" time="0.941" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-01]" time="1.032" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-02]" time="1.526" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-03]" time="3.266"><failure message="AssertionError: BVA-LOAN-MAX-03: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="5a2c3fc490fd75ac232685c435b34104")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-MAX-03: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase></testsuite></testsuites>

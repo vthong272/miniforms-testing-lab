@@ -1,0 +1,10 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m dtt -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M07\DTT.xml
+return_code: 0
+elapsed_seconds: 31.821
+
+STDOUT
+.............................                                            [100%]
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M07\DTT.xml -
+29 passed, 81 deselected in 30.71s
+
+STDERR

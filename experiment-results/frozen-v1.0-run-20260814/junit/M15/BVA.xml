@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="51" time="56.733" timestamp="2026-08-14T15:18:19.005763+07:00" hostname="DESKTOP-83RF8U8"><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-01]" time="2.765" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-02]" time="1.100" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-03]" time="0.592" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-04]" time="1.157" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-05]" time="0.506" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-USER-06]" time="0.487" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-01]" time="1.074" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-02]" time="0.533" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-03]" time="0.971" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-04]" time="0.500" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-05]" time="0.987" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-AGE-06]" time="0.506" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-01]" time="0.442" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-02]" time="1.024" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-03]" time="0.543" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-04]" time="0.485" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-05]" time="0.595" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-REG-PASS-06]" time="0.464" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-01]" time="0.932" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-02]" time="0.878" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-POS-03]" time="0.910" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-01]" time="0.959" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-02]" time="0.906" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-COUPON-03]" time="0.417" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-01]" time="0.910" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-02]" time="1.047" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-FREE-03]" time="0.957" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-01]" time="0.723" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-02]" time="0.929" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-SHIP-VIP-03]" time="0.599" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-01]" time="1.096" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-02]" time="1.072" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-03]" time="0.718" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-04]" time="0.711" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-05]" time="1.191" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-AGE-06]" time="0.498" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-01]" time="1.116" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-02]" time="0.532"><failure message="AssertionError: BVA-LOAN-INCOME-02: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="63cda5efc0e6f161395e8f1c84ed3361")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+result_text = 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-INCOME-02: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-INCOME-03]" time="1.090" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-01]" time="0.998" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-02]" time="1.000" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-03]" time="0.977" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-04]" time="0.929" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-05]" time="0.555" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-SCORE-06]" time="1.017" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-01]" time="0.982" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-02]" time="0.987" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-POS-03]" time="0.495" /><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-01]" time="0.465"><failure message="AssertionError: BVA-LOAN-MAX-01: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="63cda5efc0e6f161395e8f1c84ed3361")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+result_text = 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-MAX-01: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-02]" time="0.976"><failure message="AssertionError: BVA-LOAN-MAX-02: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="63cda5efc0e6f161395e8f1c84ed3361")&gt;
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+
+    @pytest.mark.bva
+    @pytest.mark.parametrize("case", BVA_CASES, ids=lambda case: case["test_id"])
+    def test_bva_case_passes_on_golden(driver, case):
+&gt;       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Approved', ...}
+result_text = 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+&gt;           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: BVA-LOAN-MAX-02: expected Approved, got 'Rejected — 1 condition(s) failed.\nMonthly income must be at least 15,000,000 VND.'
+
+tests\selenium\form_runner.py:93: AssertionError</failure></testcase><testcase classname="tests.selenium.test_frozen_golden" name="test_bva_case_passes_on_golden[BVA-LOAN-MAX-03]" time="14.122" /></testsuite></testsuites>

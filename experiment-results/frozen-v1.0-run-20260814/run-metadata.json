@@ -1,0 +1,528 @@
+{
+  "started_utc": "20260814T080551Z",
+  "completed_utc": "2026-08-14T08:21:39.214982+00:00",
+  "frozen_tag": "frozen-v1.0",
+  "frozen_commit": "431bcf8",
+  "frozen_sha256": "5cbd9e3b0e0b1aa0ef5e9f549eb09e0709fbb3093eccbff14a4c9ce24d8a9131",
+  "suite_sizes": {
+    "EP": 30,
+    "BVA": 51,
+    "DTT": 29
+  },
+  "mutants": 18,
+  "runs": [
+    {
+      "variant": "golden",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.739,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\golden\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\golden\\EP.log"
+    },
+    {
+      "variant": "golden",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 47.392,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\golden\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\golden\\BVA.log"
+    },
+    {
+      "variant": "golden",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 33.309,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\golden\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\golden\\DTT.log"
+    },
+    {
+      "variant": "M01",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 33.156,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M01\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M01\\EP.log"
+    },
+    {
+      "variant": "M01",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 48.758,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M01\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M01\\BVA.log"
+    },
+    {
+      "variant": "M01",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 35.426,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M01\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M01\\DTT.log"
+    },
+    {
+      "variant": "M02",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 32.033,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M02\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M02\\EP.log"
+    },
+    {
+      "variant": "M02",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 46.54,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M02\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M02\\BVA.log"
+    },
+    {
+      "variant": "M02",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.031,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M02\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M02\\DTT.log"
+    },
+    {
+      "variant": "M03",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.906,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M03\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M03\\EP.log"
+    },
+    {
+      "variant": "M03",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 53.772,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M03\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M03\\BVA.log"
+    },
+    {
+      "variant": "M03",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 33.269,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M03\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M03\\DTT.log"
+    },
+    {
+      "variant": "M04",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 29.726,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M04\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M04\\EP.log"
+    },
+    {
+      "variant": "M04",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 47.52,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M04\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M04\\BVA.log"
+    },
+    {
+      "variant": "M04",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 29.835,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M04\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M04\\DTT.log"
+    },
+    {
+      "variant": "M05",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 43.137,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M05\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M05\\EP.log"
+    },
+    {
+      "variant": "M05",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 57.596,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M05\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M05\\BVA.log"
+    },
+    {
+      "variant": "M05",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 39.878,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M05\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M05\\DTT.log"
+    },
+    {
+      "variant": "M06",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 44.403,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M06\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M06\\EP.log"
+    },
+    {
+      "variant": "M06",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 59.196,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M06\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M06\\BVA.log"
+    },
+    {
+      "variant": "M06",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 45.095,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M06\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M06\\DTT.log"
+    },
+    {
+      "variant": "M07",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 31.842,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M07\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M07\\EP.log"
+    },
+    {
+      "variant": "M07",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 46.946,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M07\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M07\\BVA.log"
+    },
+    {
+      "variant": "M07",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 31.821,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M07\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M07\\DTT.log"
+    },
+    {
+      "variant": "M08",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 30.199,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M08\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M08\\EP.log"
+    },
+    {
+      "variant": "M08",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 46.057,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M08\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M08\\BVA.log"
+    },
+    {
+      "variant": "M08",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 30.301,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M08\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M08\\DTT.log"
+    },
+    {
+      "variant": "M09",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 30.002,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M09\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M09\\EP.log"
+    },
+    {
+      "variant": "M09",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 47.263,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M09\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M09\\BVA.log"
+    },
+    {
+      "variant": "M09",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 30.171,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M09\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M09\\DTT.log"
+    },
+    {
+      "variant": "M10",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.966,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M10\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M10\\EP.log"
+    },
+    {
+      "variant": "M10",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 45.402,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M10\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M10\\BVA.log"
+    },
+    {
+      "variant": "M10",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 29.479,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M10\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M10\\DTT.log"
+    },
+    {
+      "variant": "M11",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.646,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M11\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M11\\EP.log"
+    },
+    {
+      "variant": "M11",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 47.413,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M11\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M11\\BVA.log"
+    },
+    {
+      "variant": "M11",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 30.702,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M11\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M11\\DTT.log"
+    },
+    {
+      "variant": "M12",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 29.145,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M12\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M12\\EP.log"
+    },
+    {
+      "variant": "M12",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 47.825,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M12\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M12\\BVA.log"
+    },
+    {
+      "variant": "M12",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 30.328,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M12\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M12\\DTT.log"
+    },
+    {
+      "variant": "M13",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 29.152,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M13\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M13\\EP.log"
+    },
+    {
+      "variant": "M13",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 45.965,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M13\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M13\\BVA.log"
+    },
+    {
+      "variant": "M13",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 32.69,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M13\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M13\\DTT.log"
+    },
+    {
+      "variant": "M14",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 40.345,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M14\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M14\\EP.log"
+    },
+    {
+      "variant": "M14",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 57.959,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M14\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M14\\BVA.log"
+    },
+    {
+      "variant": "M14",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 38.574,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M14\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M14\\DTT.log"
+    },
+    {
+      "variant": "M15",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 41.021,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M15\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M15\\EP.log"
+    },
+    {
+      "variant": "M15",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 57.589,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M15\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M15\\BVA.log"
+    },
+    {
+      "variant": "M15",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 40.095,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M15\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M15\\DTT.log"
+    },
+    {
+      "variant": "M16",
+      "suite": "EP",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 30.582,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M16\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M16\\EP.log"
+    },
+    {
+      "variant": "M16",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 46.653,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M16\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M16\\BVA.log"
+    },
+    {
+      "variant": "M16",
+      "suite": "DTT",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 31.273,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M16\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M16\\DTT.log"
+    },
+    {
+      "variant": "M17",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 34.192,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M17\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M17\\EP.log"
+    },
+    {
+      "variant": "M17",
+      "suite": "BVA",
+      "status": "alive",
+      "return_code": 0,
+      "elapsed_seconds": 48.118,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M17\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M17\\BVA.log"
+    },
+    {
+      "variant": "M17",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 34.634,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M17\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M17\\DTT.log"
+    },
+    {
+      "variant": "M18",
+      "suite": "EP",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 31.5,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M18\\EP.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M18\\EP.log"
+    },
+    {
+      "variant": "M18",
+      "suite": "BVA",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 48.51,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M18\\BVA.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M18\\BVA.log"
+    },
+    {
+      "variant": "M18",
+      "suite": "DTT",
+      "status": "killed",
+      "return_code": 1,
+      "elapsed_seconds": 30.984,
+      "junit": "experiment-results\\frozen-v1.0-run-20260814\\junit\\M18\\DTT.xml",
+      "log": "experiment-results\\frozen-v1.0-run-20260814\\logs\\M18\\DTT.log"
+    }
+  ]
+}

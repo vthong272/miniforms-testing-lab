@@ -1,0 +1,57 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m ep -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M12\EP.xml
+return_code: 1
+elapsed_seconds: 29.145
+
+STDOUT
+.................F............                                           [100%]
+================================== FAILURES ===================================
+__________________ test_ep_case_passes_on_golden[EP-SHIP-08] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="bb62e002782b66aa0000fe6f230058b3")>
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '10', 'expected_final_amount': '1130000', ...}
+
+    @pytest.mark.ep
+    @pytest.mark.parametrize("case", EP_CASES, ids=lambda case: case["test_id"])
+    def test_ep_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '10', 'expected_final_amount': '1130000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n15.000000000000002% (180.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n1.070.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M12\EP.xml -
+=========================== short test summary info ===========================
+FAILED tests/selenium/test_frozen_golden.py::test_ep_case_passes_on_golden[EP-SHIP-08]
+1 failed, 29 passed, 80 deselected in 28.07s
+
+STDERR

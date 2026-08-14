@@ -1,0 +1,47 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m dtt -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M18\DTT.xml
+return_code: 1
+elapsed_seconds: 30.984
+
+STDOUT
+............................F                                            [100%]
+================================== FAILURES ===================================
+_________________ test_dtt_case_passes_on_golden[DT-LOAN-06] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="de7370486fa3827b25ab21992bbf85a4")>
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'age': '30', 'credit_score': '700', 'employment_status': 'employed', 'expected_result': 'Rejected', ...}
+result_text = 'Approved — the applicant satisfies all five conditions.'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+>           assert result_text.startswith(expected), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+E           AssertionError: DT-LOAN-06: expected Rejected, got 'Approved — the applicant satisfies all five conditions.'
+
+tests\selenium\form_runner.py:93: AssertionError
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M18\DTT.xml -
+=========================== short test summary info ===========================
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-LOAN-06]
+1 failed, 28 passed, 81 deselected in 29.92s
+
+STDERR

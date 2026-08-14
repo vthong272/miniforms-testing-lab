@@ -1,0 +1,10 @@
+﻿Suite,Category,Killed,Valid,DDR_percent
+EP,Partition,5,6,83.33
+EP,Boundary,0,6,0.0
+EP,Decision-rule,5,6,83.33
+BVA,Partition,0,6,0.0
+BVA,Boundary,6,6,100.0
+BVA,Decision-rule,3,6,50.0
+DTT,Partition,1,6,16.67
+DTT,Boundary,0,6,0.0
+DTT,Decision-rule,6,6,100.0

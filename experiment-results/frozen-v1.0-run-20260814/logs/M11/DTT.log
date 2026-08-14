@@ -1,0 +1,417 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m dtt -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M11\DTT.xml
+return_code: 1
+elapsed_seconds: 30.702
+
+STDOUT
+........F.F.F.FF...FFFF......                                            [100%]
+================================== FAILURES ===================================
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-03] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '450000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '450000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (40.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n410.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-05] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '5', 'expected_final_amount': '620000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '5', 'expected_final_amount': '620000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (60.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n590.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-07] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'none', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '650000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'none', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '650000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (60.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n590.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-09] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '5', 'expected_final_amount': '905000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'vip', 'expected_discount_rate': '5', 'expected_final_amount': '905000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (90.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n860.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-10] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'invalid', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '900000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'invalid', 'customer_type': 'vip', 'expected_discount_rate': '0', 'expected_final_amount': '900000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (90.000 ₫)\nSHIPPING\n0 ₫\nFINAL AMOUNT\n810.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-14] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'valid', 'customer_type': 'regular', 'expected_discount_rate': '5', 'expected_final_amount': '1140000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'regular', 'expected_discount_rate': '5', 'expected_final_amount': '1140000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (120.000 ₫)\nSHIPPING\n0 ₫\nFINAL AMOUNT\n1.080.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-15] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'valid', 'customer_type': 'regular', 'expected_discount_rate': '5', 'expected_final_amount': '1190000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'valid', 'customer_type': 'regular', 'expected_discount_rate': '5', 'expected_final_amount': '1190000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (120.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n1.130.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-16] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'invalid', 'customer_type': 'regular', 'expected_discount_rate': '0', 'expected_final_amount': '1200000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'invalid', 'customer_type': 'regular', 'expected_discount_rate': '0', 'expected_final_amount': '1200000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (120.000 ₫)\nSHIPPING\n0 ₫\nFINAL AMOUNT\n1.080.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+_________________ test_dtt_case_passes_on_golden[DT-SHIP-17] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="14baa830fa5e368b931486baa4cd0b4d")>
+case = {'coupon_status': 'none', 'customer_type': 'regular', 'expected_discount_rate': '0', 'expected_final_amount': '1250000', ...}
+
+    @pytest.mark.dtt
+    @pytest.mark.parametrize("case", DTT_CASES, ids=lambda case: case["test_id"])
+    def test_dtt_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'none', 'customer_type': 'regular', 'expected_discount_rate': '0', 'expected_final_amount': '1250000', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n10% (120.000 ₫)\nSHIPPING\n50.000 ₫\nFINAL AMOUNT\n1.130.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+            assert result_text.startswith("Unable to calculate order."), (
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+            return
+        if expected in {"Accepted", "Rejected", "Approved"}:
+            assert result_text.startswith(expected), (
+                f"{case['test_id']}: expected {expected}, got {result_text!r}"
+            )
+            return
+    
+        assert result_text.startswith("Calculation completed."), (
+            f"{case['test_id']}: expected a calculation, got {result_text!r}"
+        )
+        discount_match = re.search(r"DISCOUNT\s+(\d+(?:\.\d+)?)%", result_text, re.I)
+        shipping_match = re.search(r"SHIPPING\s+([^\n]+)", result_text, re.I)
+        final_match = re.search(r"FINAL AMOUNT\s+([^\n]+)", result_text, re.I)
+        assert discount_match and shipping_match and final_match, result_text
+>       assert Decimal(discount_match.group(1)) == Decimal(case["expected_discount_rate"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+tests\selenium\form_runner.py:105: AssertionError
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M11\DTT.xml -
+=========================== short test summary info ===========================
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-03]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-05]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-07]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-09]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-10]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-14]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-15]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-16]
+FAILED tests/selenium/test_frozen_golden.py::test_dtt_case_passes_on_golden[DT-SHIP-17]
+9 failed, 20 passed, 81 deselected in 29.68s
+
+STDERR

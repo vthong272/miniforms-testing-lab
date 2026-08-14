@@ -1,0 +1,42 @@
+command: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\.venv\Scripts\python.exe -m pytest tests/selenium/test_frozen_golden.py -m ep -q -p no:cacheprovider --junitxml=C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M08\EP.xml
+return_code: 1
+elapsed_seconds: 30.199
+
+STDOUT
+............F.................                                           [100%]
+================================== FAILURES ===================================
+__________________ test_ep_case_passes_on_golden[EP-SHIP-03] __________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="e0e8b3a39e393e5a4d6d7edfc7272bbf")>
+case = {'coupon_status': 'none', 'customer_type': 'regular', 'expected_result': 'Rejected', 'form': 'shipping', ...}
+
+    @pytest.mark.ep
+    @pytest.mark.parametrize("case", EP_CASES, ids=lambda case: case["test_id"])
+    def test_ep_case_passes_on_golden(driver, case):
+>       submit_case(driver, BASE_URL, case)
+
+tests\selenium\test_frozen_golden.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\selenium\form_runner.py:32: in submit_case
+    _assert_result(case, result.text)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+case = {'coupon_status': 'none', 'customer_type': 'regular', 'expected_result': 'Rejected', 'form': 'shipping', ...}
+result_text = 'Calculation completed.\nDISCOUNT\n0% (0 ₫)\nSHIPPING\n30.000 ₫\nFINAL AMOUNT\n430.000 ₫'
+
+    def _assert_result(case, result_text):
+        expected = case["expected_result"]
+        if expected == "Rejected" and case["form"] == "shipping":
+>           assert result_text.startswith("Unable to calculate order."), (
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                f"{case['test_id']}: expected rejection, got {result_text!r}"
+            )
+E           AssertionError: EP-SHIP-03: expected rejection, got 'Calculation completed.\nDISCOUNT\n0% (0 ₫)\nSHIPPING\n30.000 ₫\nFINAL AMOUNT\n430.000 ₫'
+
+tests\selenium\form_runner.py:88: AssertionError
+- generated xml file: C:\Users\PC\OneDrive\Documents\ChatGPT\SWT\miniforms-study\experiment-results\frozen-v1.0-run-20260814\junit\M08\EP.xml -
+=========================== short test summary info ===========================
+FAILED tests/selenium/test_frozen_golden.py::test_ep_case_passes_on_golden[EP-SHIP-03]
+1 failed, 29 passed, 80 deselected in 29.12s
+
+STDERR
