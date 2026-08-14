@@ -1,0 +1,19 @@
+﻿id,form,target,category,requirement,description,witness_test_id,single_fault,behavior_differs_from_golden
+M01,Registration,registration,Partition,REG-R2,Email domain no longer needs a dot,DT-REG-03,True,True
+M02,Registration,registration,Partition,REG-R3,Non-integer age is accepted,EP-REG-07,True,True
+M03,Registration,registration,Boundary,REG-R1,Minimum username uses > 5 instead of >= 5,BVA-REG-USER-02,True,True
+M04,Registration,registration,Boundary,REG-R3,Maximum age uses < 60 instead of <= 60,BVA-REG-AGE-05,True,True
+M05,Registration,registration,Decision-rule,REG-R5,Password confirmation is ignored in the acceptance decision,EP-REG-10,True,True
+M06,Registration,registration,Decision-rule,REG-R1,Username invalid-range conditions use AND instead of OR,EP-REG-02,True,True
+M07,Shipping,shipping,Partition,SHIP-input,Unknown customer type is accepted,EP-SHIP-02,True,True
+M08,Shipping,shipping,Partition,SHIP-input,Unknown shipping region is accepted,EP-SHIP-03,True,True
+M09,Shipping,shipping,Boundary,SHIP-R3,"Coupon threshold uses > 500,000 instead of >=",BVA-SHIP-COUPON-02,True,True
+M10,Shipping,shipping,Boundary,SHIP-R5,"Free-shipping threshold uses > 800,000 instead of >=",BVA-SHIP-FREE-02,True,True
+M11,Shipping,shipping,Decision-rule,SHIP-R2,VIP discount eligibility uses OR instead of AND,BVA-SHIP-VIP-01,True,True
+M12,Shipping,shipping,Decision-rule,SHIP-R4,Both discounts are added instead of selecting the highest,EP-SHIP-08,True,True
+M13,Loan,loan,Partition,LOAN-R1,Non-integer age is accepted,EP-LOAN-04,True,True
+M14,Loan,loan,Partition,LOAN-R3,Non-integer credit score is accepted,EP-LOAN-08,True,True
+M15,Loan,loan,Boundary,LOAN-R2,"Minimum income uses > 15,000,000 instead of >=",BVA-LOAN-INCOME-02,True,True
+M16,Loan,loan,Boundary,LOAN-R5,Maximum loan uses < 10x income instead of <=,BVA-LOAN-MAX-02,True,True
+M17,Loan,loan,Decision-rule,LOAN-R4,Employment condition is ignored,EP-LOAN-09,True,True
+M18,Loan,loan,Decision-rule,LOAN-R5,Loan positivity and upper-limit checks use AND instead of OR,EP-LOAN-10,True,True

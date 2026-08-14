@@ -1,6 +1,11 @@
-import { validateRegistration } from "./registration.js";
-import { calculateOrder } from "./shipping.js";
-import { evaluateLoan } from "./loan.js";
+import { loadVariantModules, resolveVariant } from "./variant-loader.js";
+
+const variant = resolveVariant(new URLSearchParams(window.location.search).get("variant"));
+const { registration, shipping, loan } = await loadVariantModules(variant);
+const { validateRegistration } = registration;
+const { calculateOrder } = shipping;
+const { evaluateLoan } = loan;
+document.documentElement.dataset.variant = variant;
 
 const navItems = [...document.querySelectorAll(".nav-item")];
 const panels = [...document.querySelectorAll(".form-panel")];

@@ -1,0 +1,414 @@
+[
+  {
+    "id": "M01",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Partition",
+    "requirement": "REG-R2",
+    "description": "Email domain no longer needs a dot",
+    "witness_test_id": "DT-REG-03",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": false,
+      "errors": [
+        "Email must have a valid format."
+      ]
+    },
+    "witness_mutant_output": {
+      "accepted": true,
+      "errors": []
+    }
+  },
+  {
+    "id": "M02",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Partition",
+    "requirement": "REG-R3",
+    "description": "Non-integer age is accepted",
+    "witness_test_id": "EP-REG-07",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": false,
+      "errors": [
+        "Age must be an integer from 18 to 60."
+      ]
+    },
+    "witness_mutant_output": {
+      "accepted": true,
+      "errors": []
+    }
+  },
+  {
+    "id": "M03",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Boundary",
+    "requirement": "REG-R1",
+    "description": "Minimum username uses > 5 instead of >= 5",
+    "witness_test_id": "BVA-REG-USER-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": true,
+      "errors": []
+    },
+    "witness_mutant_output": {
+      "accepted": false,
+      "errors": [
+        "Username must contain 5 to 15 characters."
+      ]
+    }
+  },
+  {
+    "id": "M04",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Boundary",
+    "requirement": "REG-R3",
+    "description": "Maximum age uses < 60 instead of <= 60",
+    "witness_test_id": "BVA-REG-AGE-05",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": true,
+      "errors": []
+    },
+    "witness_mutant_output": {
+      "accepted": false,
+      "errors": [
+        "Age must be an integer from 18 to 60."
+      ]
+    }
+  },
+  {
+    "id": "M05",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Decision-rule",
+    "requirement": "REG-R5",
+    "description": "Password confirmation is ignored in the acceptance decision",
+    "witness_test_id": "EP-REG-10",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": false,
+      "errors": [
+        "Password and confirmation must match."
+      ]
+    },
+    "witness_mutant_output": {
+      "accepted": true,
+      "errors": [
+        "Password and confirmation must match."
+      ]
+    }
+  },
+  {
+    "id": "M06",
+    "form": "Registration",
+    "target": "registration",
+    "category": "Decision-rule",
+    "requirement": "REG-R1",
+    "description": "Username invalid-range conditions use AND instead of OR",
+    "witness_test_id": "EP-REG-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "accepted": false,
+      "errors": [
+        "Username must contain 5 to 15 characters."
+      ]
+    },
+    "witness_mutant_output": {
+      "accepted": true,
+      "errors": []
+    }
+  },
+  {
+    "id": "M07",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Partition",
+    "requirement": "SHIP-input",
+    "description": "Unknown customer type is accepted",
+    "witness_test_id": "EP-SHIP-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": false,
+      "errors": [
+        "Customer type is invalid."
+      ]
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 30000,
+      "finalAmount": 430000
+    }
+  },
+  {
+    "id": "M08",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Partition",
+    "requirement": "SHIP-input",
+    "description": "Unknown shipping region is accepted",
+    "witness_test_id": "EP-SHIP-03",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": false,
+      "errors": [
+        "Shipping region is invalid."
+      ]
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 30000,
+      "finalAmount": 430000
+    }
+  },
+  {
+    "id": "M09",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Boundary",
+    "requirement": "SHIP-R3",
+    "description": "Coupon threshold uses > 500,000 instead of >=",
+    "witness_test_id": "BVA-SHIP-COUPON-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0.05,
+      "discountAmount": 25000,
+      "shippingFee": 30000,
+      "finalAmount": 505000
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 30000,
+      "finalAmount": 530000
+    }
+  },
+  {
+    "id": "M10",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Boundary",
+    "requirement": "SHIP-R5",
+    "description": "Free-shipping threshold uses > 800,000 instead of >=",
+    "witness_test_id": "BVA-SHIP-FREE-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 0,
+      "finalAmount": 800000
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 30000,
+      "finalAmount": 830000
+    }
+  },
+  {
+    "id": "M11",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Decision-rule",
+    "requirement": "SHIP-R2",
+    "description": "VIP discount eligibility uses OR instead of AND",
+    "witness_test_id": "BVA-SHIP-VIP-01",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0,
+      "discountAmount": 0,
+      "shippingFee": 0,
+      "finalAmount": 999999
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0.1,
+      "discountAmount": 99999.90000000001,
+      "shippingFee": 0,
+      "finalAmount": 899999.1
+    }
+  },
+  {
+    "id": "M12",
+    "form": "Shipping",
+    "target": "shipping",
+    "category": "Decision-rule",
+    "requirement": "SHIP-R4",
+    "description": "Both discounts are added instead of selecting the highest",
+    "witness_test_id": "EP-SHIP-08",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0.1,
+      "discountAmount": 120000,
+      "shippingFee": 50000,
+      "finalAmount": 1130000
+    },
+    "witness_mutant_output": {
+      "valid": true,
+      "errors": [],
+      "discountRate": 0.15000000000000002,
+      "discountAmount": 180000.00000000003,
+      "shippingFee": 50000,
+      "finalAmount": 1070000
+    }
+  },
+  {
+    "id": "M13",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Partition",
+    "requirement": "LOAN-R1",
+    "description": "Non-integer age is accepted",
+    "witness_test_id": "EP-LOAN-04",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": false,
+      "reasons": [
+        "Age must be an integer from 21 to 60."
+      ]
+    },
+    "witness_mutant_output": {
+      "approved": true,
+      "reasons": []
+    }
+  },
+  {
+    "id": "M14",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Partition",
+    "requirement": "LOAN-R3",
+    "description": "Non-integer credit score is accepted",
+    "witness_test_id": "EP-LOAN-08",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": false,
+      "reasons": [
+        "Credit score must be an integer from 650 to 850."
+      ]
+    },
+    "witness_mutant_output": {
+      "approved": true,
+      "reasons": []
+    }
+  },
+  {
+    "id": "M15",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Boundary",
+    "requirement": "LOAN-R2",
+    "description": "Minimum income uses > 15,000,000 instead of >=",
+    "witness_test_id": "BVA-LOAN-INCOME-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": true,
+      "reasons": []
+    },
+    "witness_mutant_output": {
+      "approved": false,
+      "reasons": [
+        "Monthly income must be at least 15,000,000 VND."
+      ]
+    }
+  },
+  {
+    "id": "M16",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Boundary",
+    "requirement": "LOAN-R5",
+    "description": "Maximum loan uses < 10x income instead of <=",
+    "witness_test_id": "BVA-LOAN-MAX-02",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": true,
+      "reasons": []
+    },
+    "witness_mutant_output": {
+      "approved": false,
+      "reasons": [
+        "Requested loan must be positive and no more than 10 times monthly income."
+      ]
+    }
+  },
+  {
+    "id": "M17",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Decision-rule",
+    "requirement": "LOAN-R4",
+    "description": "Employment condition is ignored",
+    "witness_test_id": "EP-LOAN-09",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": false,
+      "reasons": [
+        "Applicant must be employed."
+      ]
+    },
+    "witness_mutant_output": {
+      "approved": true,
+      "reasons": []
+    }
+  },
+  {
+    "id": "M18",
+    "form": "Loan",
+    "target": "loan",
+    "category": "Decision-rule",
+    "requirement": "LOAN-R5",
+    "description": "Loan positivity and upper-limit checks use AND instead of OR",
+    "witness_test_id": "EP-LOAN-10",
+    "single_fault": true,
+    "behavior_differs_from_golden": true,
+    "witness_golden_output": {
+      "approved": false,
+      "reasons": [
+        "Requested loan must be positive and no more than 10 times monthly income."
+      ]
+    },
+    "witness_mutant_output": {
+      "approved": true,
+      "reasons": []
+    }
+  }
+]

@@ -4,13 +4,16 @@ import sys
 import tempfile
 import time
 import urllib.request
+from urllib.parse import urlencode
 from pathlib import Path
 
 import pytest
 from selenium import webdriver
 
 
-BASE_URL = os.getenv("MINIFORMS_URL", "http://127.0.0.1:8765/")
+SERVER_URL = os.getenv("MINIFORMS_URL", "http://127.0.0.1:8765/")
+VARIANT = os.getenv("MINIFORMS_VARIANT", "golden")
+BASE_URL = f"{SERVER_URL}{'&' if '?' in SERVER_URL else '?'}{urlencode({'variant': VARIANT})}"
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -28,14 +31,14 @@ def golden_server():
     try:
         for _ in range(50):
             try:
-                with urllib.request.urlopen(BASE_URL, timeout=1) as response:
+                with urllib.request.urlopen(SERVER_URL, timeout=1) as response:
                     body = response.read()
                     if response.status == 200 and b"MiniForms Testing Lab" in body:
                         break
             except OSError:
                 time.sleep(0.1)
         else:
-            raise RuntimeError(f"Golden server did not start at {BASE_URL}")
+            raise RuntimeError(f"Golden server did not start at {SERVER_URL}")
         yield
     finally:
         server.terminate()
