@@ -5,7 +5,6 @@ const { registration, shipping, loan } = await loadVariantModules(variant);
 const { validateRegistration } = registration;
 const { calculateOrder } = shipping;
 const { evaluateLoan } = loan;
-document.documentElement.dataset.variant = variant;
 
 const navItems = [...document.querySelectorAll(".nav-item")];
 const panels = [...document.querySelectorAll(".form-panel")];
@@ -115,3 +114,5 @@ document.querySelector("#loan-form").addEventListener("submit", (event) => {
 
 const initialTarget = window.location.hash.slice(1);
 activatePanel(initialTarget || "registration", false);
+// Selenium uses this marker only after every handler and panel is ready.
+document.documentElement.dataset.variant = variant;

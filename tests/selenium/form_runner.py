@@ -1,14 +1,33 @@
 import re
 from decimal import Decimal, ROUND_HALF_UP
+from urllib.parse import parse_qs, urlparse
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select, WebDriverWait
 
 
+def expected_variant_from_url(url):
+    candidate = parse_qs(urlparse(url).query).get("variant", ["golden"])[0]
+    if re.fullmatch(r"M(?:0[1-9]|1[0-8])", candidate):
+        return candidate
+    return "golden"
+
+
+def _wait_for_app_ready(driver, base_url):
+    expected_variant = expected_variant_from_url(base_url)
+    WebDriverWait(driver, 15).until(
+        lambda browser: browser.find_element(By.TAG_NAME, "html").get_attribute(
+            "data-variant"
+        )
+        == expected_variant
+    )
+
+
 def submit_case(driver, base_url, case):
     form = case["form"]
     driver.get(base_url)
+    _wait_for_app_ready(driver, base_url)
     WebDriverWait(driver, 5).until(
         EC.visibility_of_element_located((By.ID, "registration"))
     )
