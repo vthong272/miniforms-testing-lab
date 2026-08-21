@@ -10,9 +10,9 @@ Không dán riêng fragment bắt đầu bằng đoạn `EP, BVA và DTT...` vì
 thiếu preamble và `\\begin{document}`. Nếu chỉ muốn thay file trong project cũ,
 dùng `main_fixed.tex` và đổi tên thành `main.tex`.
 
-Trang đầu đã được rút gọn theo mẫu tiếng Việt: `SWT301 -- Software Testing,
-lớp 3W_SWT301` và `Giảng viên hướng dẫn: ThS. Đỗ Phúc Thịnh (ThinhDP2)`.
-Các dòng email/affiliation thừa đã được loại bỏ để tránh hiển thị lặp.
+Trang đầu dùng block tác giả của `tham-khao-en.tex`: ba tác giả, một dòng
+`FPT University, Ho Chi Minh City, Vietnam` và ba email. Không hiển thị lớp hoặc
+giảng viên trong block tác giả.
 
 ## 2. Source code và bằng chứng thực nghiệm
 

@@ -24,12 +24,15 @@ def test_accepts_complete_overleaf_main():
     validate_tex_document(report_main)
 
 
-def test_title_block_uses_correct_class_and_has_no_duplicate_affiliation():
+def test_title_block_matches_the_english_template_without_duplicate_affiliation():
     report_main = Path(__file__).resolve().parents[2] / "submission" / "overleaf-report" / "main.tex"
     text = report_main.read_text(encoding="utf-8")
 
-    assert r"lớp 3W\_SWT301" in text
+    assert "lớp 3W" not in text
     assert "lớp SE2036" not in text
+    assert "Giảng viên hướng dẫn" not in text
     assert text.count(r"\institute{") == 1
-    assert text.count("Giảng viên hướng dẫn: ThS. Đỗ Phúc Thịnh (ThinhDP2)") == 1
-    assert "@gmail.com" not in text
+    assert text.count("FPT University, Ho Chi Minh City, Vietnam") == 1
+    assert text.count("thongvinh2@gmail.com") == 1
+    assert text.count("daothingoctram0604@gmail.com") == 1
+    assert text.count("thanhthao725218@gmail.com") == 1
