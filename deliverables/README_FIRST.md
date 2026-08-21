@@ -10,6 +10,10 @@ Không dán riêng fragment bắt đầu bằng đoạn `EP, BVA và DTT...` vì
 thiếu preamble và `\\begin{document}`. Nếu chỉ muốn thay file trong project cũ,
 dùng `main_fixed.tex` và đổi tên thành `main.tex`.
 
+Trang đầu đã được rút gọn theo mẫu tiếng Việt: `SWT301 -- Software Testing,
+lớp 3W_SWT301` và `Giảng viên hướng dẫn: ThS. Đỗ Phúc Thịnh (ThinhDP2)`.
+Các dòng email/affiliation thừa đã được loại bỏ để tránh hiển thị lặp.
+
 ## 2. Source code và bằng chứng thực nghiệm
 
 File: `MiniForms_Source_Code_Experiment.zip`
