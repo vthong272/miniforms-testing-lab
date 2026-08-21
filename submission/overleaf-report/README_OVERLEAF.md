@@ -6,6 +6,13 @@
 4. Đặt **Main document** là `main.tex`.
 5. Chọn **Recompile**. Overleaf sẽ tự chạy BibTeX để tạo danh mục tài liệu tham khảo.
 
+## Nếu Overleaf báo `Missing \\begin{document}`
+
+Không dán riêng đoạn bắt đầu bằng nội dung `EP, BVA và DTT...` vào sau
+`\\documentclass`. Đó chỉ là một đoạn giữa bài. Hãy upload nguyên ZIP hoặc thay
+toàn bộ file bằng `main.tex` trong gói này; file hoàn chỉnh có preamble,
+`\\begin{document}`, tiêu đề, abstract và `\\end{document}`.
+
 ## Nội dung gói
 
 - `main.tex`: báo cáo tiếng Việt theo định dạng Springer LLNCS.

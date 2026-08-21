@@ -2,9 +2,13 @@
 
 ## 1. Báo cáo
 
-File: `MiniForms_Overleaf_Report_VI.zip`
+File khuyến nghị: `MiniForms_Overleaf_Report_VI_FIXED.zip`
 
-Trên Overleaf chọn **New Project > Upload Project**, tải file ZIP này lên, chọn compiler **pdfLaTeX**, main document `main.tex`, sau đó chọn **Recompile**.
+Trên Overleaf chọn **New Project > Upload Project**, tải nguyên file ZIP này lên,
+chọn compiler **pdfLaTeX**, main document `main.tex`, sau đó chọn **Recompile**.
+Không dán riêng fragment bắt đầu bằng đoạn `EP, BVA và DTT...` vì fragment đó
+thiếu preamble và `\\begin{document}`. Nếu chỉ muốn thay file trong project cũ,
+dùng `main_fixed.tex` và đổi tên thành `main.tex`.
 
 ## 2. Source code và bằng chứng thực nghiệm
 

@@ -5,9 +5,6 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from pypdf import PdfReader
-
-
 ROOT = Path(__file__).resolve().parent
 REPORT = ROOT / "overleaf-report"
 TEX = REPORT / "main.tex"
@@ -18,19 +15,44 @@ def fail(message: str) -> None:
     raise SystemExit(f"FAILED: {message}")
 
 
+def validate_tex_document(path: Path) -> str:
+    """Reject partial LaTeX fragments before they are packaged as main.tex."""
+    text = path.read_text(encoding="utf-8")
+    required_markers = [
+        r"\documentclass[runningheads]{llncs}",
+        r"\begin{document}",
+        r"\usepackage[T5]{fontenc}",
+        r"\maketitle",
+        r"\begin{abstract}",
+        r"\end{abstract}",
+        r"\end{document}",
+    ]
+    for marker in required_markers:
+        if marker not in text:
+            raise ValueError(f"missing required LaTeX marker: {marker}")
+    if text.index(r"\begin{document}") > text.index(r"\maketitle"):
+        raise ValueError(r"\maketitle must appear after \begin{document}")
+    if text.rfind(r"\end{document}") < text.index(r"\begin{document}"):
+        raise ValueError(r"\end{document} must appear after \begin{document}")
+    begins = re.findall(r"\\begin\{([^}]+)\}", text)
+    ends = re.findall(r"\\end\{([^}]+)\}", text)
+    if sorted(begins) != sorted(ends):
+        raise ValueError("LaTeX environments are unbalanced")
+    return text
+
+
 def main() -> None:
-    text = TEX.read_text(encoding="utf-8")
+    from pypdf import PdfReader
+
+    try:
+        text = validate_tex_document(TEX)
+    except ValueError as error:
+        fail(str(error))
     bib = BIB.read_text(encoding="utf-8")
 
     for required in ["llncs.cls", "splncs04.bst", "references.bib", "README_OVERLEAF.md"]:
         if not (REPORT / required).is_file():
             fail(f"missing {required}")
-
-    begins = re.findall(r"\\begin\{([^}]+)\}", text)
-    ends = re.findall(r"\\end\{([^}]+)\}", text)
-    if begins != list(reversed(list(reversed(ends)))):
-        if sorted(begins) != sorted(ends):
-            fail("LaTeX environments are unbalanced")
 
     labels = re.findall(r"\\label\{([^}]+)\}", text)
     if len(labels) != len(set(labels)):
