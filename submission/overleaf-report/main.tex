@@ -1,0 +1,332 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{enumitem}
+
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+
+\title{Ảnh hưởng của các kỹ thuật kiểm thử phần mềm đến tỷ lệ phát hiện lỗi}
+\titlerunning{So sánh EP, BVA và Decision Table Testing}
+
+\author{Thong Phan Dien Vinh \and Tram Dao Thi Ngoc \and Thao Bui Nguyen Thanh}
+\authorrunning{Thông Phan Diên Vĩnh và cộng sự}
+\institute{SWT301 -- Software Testing, lớp SE2036\\
+Giảng viên hướng dẫn: ThS. Đỗ Phúc Thịnh (ThinhDP2)\\
+FPT University, Ho Chi Minh City, Vietnam\\
+\email{thongvinh2@gmail.com, daothingoctram0604@gmail.com, thanhthao725218@gmail.com}}
+
+\maketitle
+
+\begin{abstract}
+Lựa chọn kỹ thuật thiết kế ca kiểm thử ảnh hưởng trực tiếp đến loại lỗi mà một bộ kiểm thử có thể phát hiện. Nghiên cứu này so sánh ba kỹ thuật kiểm thử hộp đen: Phân vùng tương đương (Equivalence Partitioning--EP), Phân tích giá trị biên (Boundary Value Analysis--BVA) và Kiểm thử bảng quyết định (Decision Table Testing--DTT) trên logic nghiệp vụ của biểu mẫu web. Nhóm xây dựng MiniForms, một ứng dụng HTML/CSS/JavaScript thuần gồm ba biểu mẫu Đăng ký, Giao hàng và chiết khấu, và Điều kiện vay. Từ cùng một đặc tả, ba bộ kiểm thử được thiết kế độc lập, sau đó đóng băng ở phiên bản 1.0 với 30 ca EP, 51 ca BVA và 29 ca DTT. Hiệu quả phát hiện lỗi được đánh giá bằng 18 single-fault mutant cân bằng giữa lỗi phân vùng, lỗi biên và lỗi luật quyết định. Toàn bộ ca kiểm thử được thực thi bằng một Selenium runner dùng chung. Kết quả cho thấy EP phát hiện 10/18 mutant (55,56\%), BVA phát hiện 9/18 (50,00\%) và DTT phát hiện 7/18 (38,89\%). Theo từng nhóm lỗi, EP đạt 83,33\% trên lỗi phân vùng, BVA đạt 100\% trên lỗi biên và DTT đạt 100\% trên lỗi luật quyết định. Không kỹ thuật riêng lẻ nào phát hiện quá 10 mutant, trong khi hợp của ba bộ kiểm thử phát hiện 18/18 mutant. Kết quả cung cấp bằng chứng pilot rằng ba kỹ thuật có tính bổ sung và nên được phối hợp khi kiểm thử web-form business logic.
+
+\keywords{Kiểm thử phần mềm \and Equivalence Partitioning \and Boundary Value Analysis \and Decision Table Testing \and Mutation testing \and Selenium}
+\end{abstract}
+
+\section{Giới thiệu}
+\label{sec:introduction}
+
+Biểu mẫu web thường chứa nhiều quy tắc xác thực đầu vào và quy tắc nghiệp vụ: độ dài tên người dùng, khoảng tuổi hợp lệ, ngưỡng giảm giá, mức thu nhập tối thiểu hoặc tổ hợp điều kiện để phê duyệt khoản vay. Chỉ kiểm tra một vài dữ liệu hợp lệ điển hình có thể bỏ sót lỗi ở lớp dữ liệu không hợp lệ, tại đúng điểm biên hoặc trong tổ hợp nhiều điều kiện. Vì vậy, thiết kế ca kiểm thử cần có tiêu chí rõ ràng thay vì chọn dữ liệu tùy ý.
+
+EP, BVA và DTT là ba kỹ thuật hộp đen phổ biến. EP chia miền đầu vào thành các lớp được kỳ vọng có hành vi tương đương; BVA tập trung vào các giá trị tại và lân cận biên; DTT biểu diễn tổ hợp điều kiện--hành động dưới dạng các luật quyết định~\cite{istqb2021ctfl}. Mỗi kỹ thuật có cơ chế chọn dữ liệu khác nhau, do đó có thể phát hiện các nhóm lỗi khác nhau. Các nghiên cứu thực nghiệm trước đây cũng cho thấy hiệu quả tương đối phụ thuộc vào chương trình và loại lỗi, còn việc kết hợp kỹ thuật thường hiệu quả hơn sử dụng riêng lẻ~\cite{roper1997empirical,reid1997analysis}.
+
+Nghiên cứu trả lời câu hỏi chính sau:
+
+\begin{quote}
+\emph{EP, BVA và Decision Table Testing khác nhau như thế nào về Defect Detection Rate và Test Suite Efficiency khi kiểm thử business logic của biểu mẫu web?}
+\end{quote}
+
+Câu hỏi chính được cụ thể hóa thành bốn câu hỏi nghiên cứu:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{RQ1:} EP có phát hiện lỗi phân vùng tốt nhất không?
+  \item \textbf{RQ2:} BVA có phát hiện lỗi biên tốt nhất không?
+  \item \textbf{RQ3:} DTT có phát hiện lỗi luật quyết định tốt nhất không?
+  \item \textbf{RQ4:} Kết hợp ba kỹ thuật có phát hiện nhiều lỗi hơn từng kỹ thuật riêng không?
+\end{itemize}
+
+Đóng góp của nghiên cứu gồm: (1) một benchmark MiniForms có đặc tả và ba biểu mẫu; (2) ba bộ kiểm thử đóng băng gồm 110 ca có ID duy nhất; (3) 18 single-fault mutant cân bằng theo loại lỗi và biểu mẫu; (4) quy trình Selenium có thể tái lập cùng bằng chứng JUnit; và (5) phân tích DDR, hiệu quả, độ giao nhau, số lỗi phát hiện riêng và hiệu quả kết hợp.
+
+\section{Cơ sở lý thuyết và nghiên cứu liên quan}
+\label{sec:related}
+
+\subsection{Các kỹ thuật thiết kế ca kiểm thử}
+
+\textbf{Phân vùng tương đương (EP)} chia miền dữ liệu thành các partition mà các giá trị trong cùng một partition được kỳ vọng tạo ra hành vi giống nhau. Một hoặc một số giá trị đại diện được chọn từ mỗi partition, giúp giảm số ca kiểm thử nhưng vẫn bao phủ lớp hợp lệ và không hợp lệ. EP phù hợp với loại dữ liệu, định dạng, tập giá trị cho phép và các khoảng đầu vào.
+
+\textbf{Phân tích giá trị biên (BVA)} mở rộng ý tưởng partition đối với miền có thứ tự. Trong biến thể ba điểm được dùng ở nghiên cứu này, dữ liệu được chọn ngay dưới biên, tại biên và ngay trên biên. ISTQB nhận định lỗi thường xuất hiện tại biên và mô tả cả cách chọn hai điểm lẫn ba điểm cho mỗi biên~\cite{istqb2021ctfl}. Reid~\cite{reid1997analysis} thực nghiệm trên một hệ thống avionics và ghi nhận BVA hiệu quả hơn EP và kiểm thử ngẫu nhiên trong bối cảnh được khảo sát.
+
+\textbf{Kiểm thử bảng quyết định (DTT)} mô hình hóa các điều kiện và hành động thành các cột luật. Mỗi luật khả thi biểu diễn một tổ hợp điều kiện dẫn đến kết quả mong đợi. DTT đặc biệt phù hợp với business logic có nhiều điều kiện tương tác, ví dụ khách hàng VIP chỉ được giảm giá khi giá trị đơn đạt ngưỡng hoặc hồ sơ vay chỉ được duyệt khi đồng thời thỏa các điều kiện tuổi, thu nhập, điểm tín dụng, việc làm và hạn mức.
+
+Putri và cộng sự~\cite{putri2024comparison} đã so sánh ECP, BVA và Decision Table trên một website hỗ trợ kiểm định bệnh viện và ghi nhận hiệu quả khác nhau giữa ba kỹ thuật. Tuy nhiên, số ca kiểm thử thất bại trên một phiên bản ứng dụng không cho biết trực tiếp khả năng phát hiện một tập lỗi được kiểm soát. Nghiên cứu hiện tại bổ sung một benchmark có golden version, mutant được phân loại trước và quy tắc killed/valid rõ ràng.
+
+\subsection{Mutation testing trong đánh giá bộ kiểm thử}
+
+Mutation testing tạo các phiên bản chương trình có thay đổi nhỏ, gọi là mutant, rồi quan sát bộ kiểm thử có phân biệt được mutant với chương trình gốc hay không. Một mutant bị \emph{killed} khi ít nhất một ca kiểm thử vốn pass trên golden version tạo assertion failure trên mutant. Mutation score là một chỉ báo về khả năng phát hiện lỗi của bộ kiểm thử~\cite{jia2011mutation}.
+
+Mutant không chạy được, chứa nhiều thay đổi, hoặc tương đương hành vi với golden có thể làm sai lệch kết quả. Andrews, Briand và Labiche~\cite{andrews2005mutation} chỉ ra rằng mutation testing có thể hỗ trợ thí nghiệm so sánh kỹ thuật, nhưng tính đại diện của lỗi gieo vẫn phải được xem xét. Vì vậy, nghiên cứu này chỉ sử dụng single-fault mutant, kiểm tra đúng một replacement ở cấp source và yêu cầu mỗi mutant phải khác golden trên ít nhất một witness input đã đóng băng.
+
+\section{Phương pháp nghiên cứu}
+\label{sec:method}
+
+\subsection{Thiết kế nghiên cứu}
+
+Nghiên cứu được trình bày dưới dạng \textbf{controlled benchmark pilot study}. Biến độc lập là kỹ thuật thiết kế ca kiểm thử (EP, BVA hoặc DTT). Các biến phụ thuộc là DDR tổng thể, DDR theo loại lỗi, hiệu quả trên mỗi ca kiểm thử, overlap giữa kỹ thuật, unique kills và combined effectiveness. Đối tượng thử nghiệm là MiniForms; tất cả bộ kiểm thử dùng chung yêu cầu, giao diện, trình duyệt, Selenium runner, selector và cơ chế assertion.
+
+Nhóm thực hiện quy trình freeze-before-mutation: ba bộ kiểm thử được review chéo, chốt input và expected result, chạy pass trên golden rồi mới xem kết quả mutant. Cơ chế này giảm nguy cơ sửa test sau khi biết mutant để làm tăng mutation score.
+
+\subsection{Đối tượng thử nghiệm MiniForms}
+
+MiniForms là ứng dụng tĩnh HTML/CSS/JavaScript gồm ba mô-đun business logic:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Registration}: kiểm tra tên người dùng, email, tuổi, độ dài mật khẩu và xác nhận mật khẩu.
+  \item \textbf{Shipping \& Discount}: tính mức giảm giá, phí giao hàng và tổng tiền dựa trên loại khách hàng, giá trị đơn, khu vực và coupon.
+  \item \textbf{Loan Eligibility}: quyết định phê duyệt khoản vay dựa trên tuổi, thu nhập, điểm tín dụng, tình trạng việc làm và hạn mức vay.
+\end{itemize}
+
+Các hàm business logic tách khỏi DOM để golden và mutant chỉ khác nhau tại biểu thức được gieo lỗi. Giao diện chọn phiên bản chạy thông qua tham số \texttt{variant}; ví dụ \texttt{?variant=M09} nạp mutant M09 trong khi không có tham số sẽ nạp golden.
+
+\subsection{Bộ kiểm thử Frozen v1.0}
+
+Ba suite được thiết kế độc lập từ cùng tài liệu business rules. Bảng~\ref{tab:suite-size} trình bày phân bố ca kiểm thử. Tổng cộng có 110 test ID duy nhất. Manifest Frozen v1.0 có SHA-256 \texttt{5cbd9e3b...d8a9131}, tag \texttt{frozen-v1.0} và commit \texttt{431bcf8}.
+
+\begin{table}[htbp]
+\caption{Phân bố ca kiểm thử trong Frozen v1.0.}
+\label{tab:suite-size}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Kỹ thuật} & \textbf{Registration} & \textbf{Shipping} & \textbf{Loan} & \textbf{Tổng} \\
+\midrule
+EP  & 10 & 9  & 11 & 30 \\
+BVA & 18 & 12 & 21 & 51 \\
+DTT & 6  & 17 & 6  & 29 \\
+\midrule
+Tổng & 34 & 38 & 38 & 110 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+EP chọn đại diện từ các lớp input hợp lệ và không hợp lệ. BVA sử dụng giá trị ngay dưới, tại và ngay trên các ngưỡng. DTT bao phủ các luật quyết định khả thi và các tổ hợp business rule quan trọng. Các ca kiểm thử không được thay đổi sau khi nhóm bắt đầu xem mutant.
+
+\subsection{Thiết kế 18 single-fault mutant}
+
+Tập mutant được cân bằng theo hai chiều: mỗi biểu mẫu có sáu mutant; mỗi loại lỗi Partition, Boundary và Decision-rule có sáu mutant. Mỗi mutant chỉ thay đổi một biểu thức so với golden. Bảng~\ref{tab:mutants} tóm tắt thiết kế.
+
+\begin{table}[htbp]
+\caption{Danh mục 18 single-fault mutant.}
+\label{tab:mutants}
+\centering
+\scriptsize
+\begin{tabular}{lp{1.45cm}p{1.65cm}lp{5.25cm}}
+\toprule
+\textbf{ID} & \textbf{Form} & \textbf{Nhóm lỗi} & \textbf{Rule} & \textbf{Thay đổi được gieo} \\
+\midrule
+M01 & Registration & Partition & REG-R2 & Email không còn bắt buộc dấu chấm ở domain. \\
+M02 & Registration & Partition & REG-R3 & Chấp nhận tuổi không nguyên. \\
+M03 & Registration & Boundary & REG-R1 & Loại username đúng 5 ký tự. \\
+M04 & Registration & Boundary & REG-R3 & Loại tuổi đúng 60. \\
+M05 & Registration & Decision-rule & REG-R5 & Bỏ kiểm tra xác nhận mật khẩu. \\
+M06 & Registration & Decision-rule & REG-R1 & Dùng AND thay OR cho khoảng username không hợp lệ. \\
+M07 & Shipping & Partition & SHIP-input & Chấp nhận loại khách hàng lạ. \\
+M08 & Shipping & Partition & SHIP-input & Chấp nhận khu vực giao hàng lạ. \\
+M09 & Shipping & Boundary & SHIP-R3 & Ngưỡng coupon dùng $>$ thay vì $\geq$. \\
+M10 & Shipping & Boundary & SHIP-R5 & Ngưỡng miễn phí giao hàng dùng $>$ thay vì $\geq$. \\
+M11 & Shipping & Decision-rule & SHIP-R2 & Điều kiện VIP dùng OR thay AND. \\
+M12 & Shipping & Decision-rule & SHIP-R4 & Cộng hai discount thay vì chọn mức cao nhất. \\
+M13 & Loan & Partition & LOAN-R1 & Chấp nhận tuổi không nguyên. \\
+M14 & Loan & Partition & LOAN-R3 & Chấp nhận điểm tín dụng không nguyên. \\
+M15 & Loan & Boundary & LOAN-R2 & Thu nhập tối thiểu dùng $>$ thay vì $\geq$. \\
+M16 & Loan & Boundary & LOAN-R5 & Khoản vay tối đa dùng $<$ thay vì $\leq$. \\
+M17 & Loan & Decision-rule & LOAN-R4 & Bỏ điều kiện tình trạng việc làm. \\
+M18 & Loan & Decision-rule & LOAN-R5 & Điều kiện khoản vay dùng AND thay OR. \\
+\bottomrule
+\end{tabular}
+\end{table}
+\FloatBarrier
+
+\subsection{Quy trình thực nghiệm}
+
+Selenium WebDriver điều khiển trình duyệt theo cách tương tự người dùng và cung cấp giao diện tự động hóa nhất quán~\cite{seleniumwebdriver}. Thí nghiệm sử dụng một Selenium runner Python dùng chung cho cả ba suite và thực hiện các bước:
+\begin{enumerate}[leftmargin=*]
+  \item Xác minh fingerprint và số lượng ca của Frozen v1.0.
+  \item Chạy ba suite trên golden; điều kiện mở cổng là EP 30/30, BVA 51/51 và DTT 29/29.
+  \item Với từng M01--M18, lần lượt chạy EP, BVA và DTT.
+  \item Ghi \texttt{1} nếu suite có assertion failure và \texttt{0} nếu suite vẫn pass.
+  \item Đánh dấu invalid nếu thiếu test, có lỗi collection/setup, ChromeDriver hoặc server; invalid không được tính là killed.
+  \item Sinh mutation matrix và tính toàn bộ metrics bằng script, không nhập tay.
+\end{enumerate}
+
+Run chính được thực hiện ngày 14/08/2026, tạo 57 báo cáo JUnit: ba lượt golden và 54 lượt mutant. Golden pass toàn bộ 110 ca và không có lượt invalid.
+
+\subsection{Chỉ số đánh giá}
+
+Với $K_s$ là số valid mutant bị suite $s$ phát hiện và $N$ là tổng valid mutant, Defect Detection Rate được tính bằng:
+\begin{equation}
+DDR_s = \frac{K_s}{N}\times 100\%.
+\label{eq:ddr}
+\end{equation}
+
+Với $T_s$ là số ca kiểm thử của suite $s$, Test Suite Efficiency là:
+\begin{equation}
+Efficiency_s = \frac{K_s}{T_s}.
+\label{eq:efficiency}
+\end{equation}
+
+DDR theo nhóm lỗi được tính tương tự nhưng mẫu số chỉ gồm sáu mutant thuộc nhóm tương ứng. Overlap là giao của hai tập mutant bị killed. Nghiên cứu cũng báo cáo Jaccard $|A\cap B|/|A\cup B|$, unique kills của từng suite và combined DDR của hợp ba tập killed.
+
+\section{Kết quả}
+\label{sec:results}
+
+\subsection{DDR tổng thể và hiệu quả bộ kiểm thử}
+
+Bảng~\ref{tab:overall} và Hình~\ref{fig:overall} cho thấy EP có DDR tổng thể cao nhất với 10/18 mutant, tiếp theo là BVA với 9/18 và DTT với 7/18. EP đồng thời có efficiency cao nhất (0,3333 mutant/ca), DTT đứng thứ hai (0,2414) và BVA thấp nhất (0,1765) do BVA có 51 ca.
+
+\begin{table}[htbp]
+\caption{DDR tổng thể và Test Suite Efficiency.}
+\label{tab:overall}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Suite} & \textbf{Số ca} & \textbf{Killed/18} & \textbf{DDR} & \textbf{Efficiency} \\
+\midrule
+EP  & 30 & 10 & 55,56\% & 0,3333 \\
+BVA & 51 & 9  & 50,00\% & 0,1765 \\
+DTT & 29 & 7  & 38,89\% & 0,2414 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/overall_metrics.pdf}
+\caption{So sánh DDR tổng thể và số mutant phát hiện trên mỗi ca kiểm thử.}
+\label{fig:overall}
+\end{figure}
+
+\subsection{DDR theo loại lỗi}
+
+Kết quả ở Bảng~\ref{tab:category} và Hình~\ref{fig:category} thể hiện rõ tính chuyên biệt. EP phát hiện 5/6 lỗi Partition; BVA phát hiện 6/6 lỗi Boundary; DTT phát hiện 6/6 lỗi Decision-rule. Một số kỹ thuật vẫn phát hiện lỗi ngoài nhóm mục tiêu vì một ca kiểm thử có thể đồng thời đại diện partition, chạm một luật quyết định và sử dụng dữ liệu gần ngưỡng.
+
+\begin{table}[htbp]
+\caption{DDR theo loại lỗi.}
+\label{tab:category}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Suite} & \textbf{Partition (6)} & \textbf{Boundary (6)} & \textbf{Decision-rule (6)} \\
+\midrule
+EP  & 5/6 (83,33\%) & 0/6 (0\%) & 5/6 (83,33\%) \\
+BVA & 0/6 (0\%) & 6/6 (100\%) & 3/6 (50,00\%) \\
+DTT & 1/6 (16,67\%) & 0/6 (0\%) & 6/6 (100\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/category_ddr.pdf}
+\caption{DDR của mỗi kỹ thuật trên ba nhóm lỗi.}
+\label{fig:category}
+\end{figure}
+
+\subsection{Mutation matrix}
+
+\begin{table}[htbp]
+\caption{Ma trận phát hiện mutant (1 = killed, 0 = survived).}
+\label{tab:matrix}
+\centering
+\small
+\begin{tabular}{llccc@{\qquad}llccc}
+\toprule
+\textbf{ID} & \textbf{Nhóm} & \textbf{EP} & \textbf{BVA} & \textbf{DTT} &
+\textbf{ID} & \textbf{Nhóm} & \textbf{EP} & \textbf{BVA} & \textbf{DTT} \\
+\midrule
+M01 & Partition & 0 & 0 & 1 & M10 & Boundary & 0 & 1 & 0 \\
+M02 & Partition & 1 & 0 & 0 & M11 & Decision & 0 & 1 & 1 \\
+M03 & Boundary  & 0 & 1 & 0 & M12 & Decision & 1 & 0 & 1 \\
+M04 & Boundary  & 0 & 1 & 0 & M13 & Partition & 1 & 0 & 0 \\
+M05 & Decision  & 1 & 0 & 1 & M14 & Partition & 1 & 0 & 0 \\
+M06 & Decision  & 1 & 1 & 1 & M15 & Boundary & 0 & 1 & 0 \\
+M07 & Partition & 1 & 0 & 0 & M16 & Boundary & 0 & 1 & 0 \\
+M08 & Partition & 1 & 0 & 0 & M17 & Decision & 1 & 0 & 1 \\
+M09 & Boundary  & 0 & 1 & 0 & M18 & Decision & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Overlap, unique kills và hiệu quả kết hợp}
+
+EP--BVA cùng phát hiện 2 mutant (M06, M18), EP--DTT cùng phát hiện 5 mutant (M05, M06, M12, M17, M18), còn BVA--DTT cùng phát hiện 3 mutant (M06, M11, M18). Jaccard tương ứng là 11,76\%, 41,67\% và 23,08\%. EP có 5 unique kills, BVA có 6 và DTT có 1. Hợp của ba tập killed bao phủ đủ 18 mutant, đạt combined DDR 100\% (Hình~\ref{fig:unique}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/unique_combined.pdf}
+\caption{Số mutant chỉ một kỹ thuật phát hiện và hiệu quả kết hợp.}
+\label{fig:unique}
+\end{figure}
+\FloatBarrier
+
+\section{Thảo luận}
+\label{sec:discussion}
+
+\subsection{Trả lời các câu hỏi nghiên cứu}
+
+\textbf{RQ1 -- EP và lỗi Partition.} EP đạt 83,33\%, cao hơn DTT 16,67\% và BVA 0\%. Kết quả ủng hộ kỳ vọng rằng việc chọn đại diện từ các input class hợp lệ/không hợp lệ giúp EP phát hiện thay đổi về định dạng, kiểu dữ liệu và tập giá trị cho phép. M01 chỉ DTT phát hiện cho thấy việc gắn nhãn kỹ thuật không tạo ra ranh giới tuyệt đối: một luật DTT vẫn có thể dùng dữ liệu đại diện của partition.
+
+\textbf{RQ2 -- BVA và lỗi Boundary.} BVA phát hiện toàn bộ 6/6 lỗi biên, trong khi EP và DTT không phát hiện mutant biên nào. Các lỗi M03, M04, M09, M10, M15 và M16 đều thay đổi toán tử bao hàm tại đúng giá trị ngưỡng. Ca BVA tại biên làm golden và mutant cho kết quả khác nhau; dữ liệu đại diện nằm sâu trong partition của EP hoặc tổ hợp luật của DTT không tạo ra khác biệt này.
+
+\textbf{RQ3 -- DTT và lỗi Decision-rule.} DTT đạt 100\% trên sáu lỗi luật quyết định, cao hơn EP 83,33\% và BVA 50\%. Kết quả phù hợp với mục đích của bảng quyết định là bao phủ tổ hợp điều kiện--hành động. Tuy nhiên, EP cũng phát hiện 5/6 lỗi Decision-rule vì một số representative input đồng thời kích hoạt các nhánh quyết định quan trọng.
+
+\textbf{RQ4 -- hiệu quả kết hợp.} Không suite riêng nào vượt quá 10/18, nhưng hợp ba suite đạt 18/18. Sáu mutant biên là unique kill của BVA; năm mutant là unique kill của EP; M01 là unique kill của DTT. Do đó bỏ bất kỳ kỹ thuật nào cũng để lại ít nhất một khoảng trống trong benchmark.
+
+\subsection{Ý nghĩa thực tiễn}
+
+Overall DDR không nên là tiêu chí duy nhất để chọn kỹ thuật. EP có DDR và efficiency cao nhất trong benchmark, nhưng hoàn toàn bỏ sót nhóm Boundary. BVA có efficiency thấp hơn vì suite lớn, song sáu unique kill của BVA đều không thể thay thế bằng EP hoặc DTT hiện tại. DTT có overall DDR thấp nhất nhưng là kỹ thuật duy nhất phát hiện M01 và đạt 100\% Decision-rule DDR.
+
+Với web-form business logic, một chiến lược thực tế là: dùng EP để xác định lớp dữ liệu, mở rộng các partition có thứ tự bằng BVA ba điểm, rồi xây Decision Table cho các điều kiện tương tác. Các test trùng mục tiêu có thể được hợp nhất sau khi đo traceability, nhưng không nên loại bỏ chỉ dựa trên số lượng ca.
+
+\subsection{Giải thích chỉ số Efficiency}
+
+Efficiency trong nghiên cứu là số mutant killed trên một test case; chỉ số này không phải thời gian thực thi, chi phí viết test hay chi phí bảo trì. Một suite nhỏ có thể có efficiency cao nhưng bỏ sót cả một nhóm lỗi. Vì vậy efficiency phải được đọc cùng DDR theo category, unique kills và combined effectiveness.
+
+\section{Nguy cơ đối với tính hợp lệ}
+\label{sec:threats}
+
+\textbf{Construct validity.} Mutation score là proxy cho khả năng phát hiện lỗi, không đồng nhất với số lỗi sản xuất thực tế. Efficiency chỉ dùng số ca kiểm thử làm chi phí, chưa phản ánh thời gian thiết kế và bảo trì.
+
+\textbf{Internal validity.} Nhóm tự viết requirement, test suite và mutant nên có nguy cơ thiên lệch. Freeze-before-mutation, fingerprint, review chéo, golden gate và witness verification làm giảm nhưng không loại bỏ hoàn toàn nguy cơ này. Một mutant có thể thuộc một category chính nhưng vẫn được dữ liệu của kỹ thuật khác kích hoạt.
+
+\textbf{External validity.} Benchmark chỉ gồm ba biểu mẫu nhỏ viết bằng JavaScript thuần. Kết quả chưa thể khái quát trực tiếp sang ứng dụng lớn, framework khác, backend, lỗi bất đồng bộ, lỗi UI/UX hoặc lỗi tích hợp.
+
+\textbf{Conclusion validity.} Chỉ có 18 mutant, mỗi category sáu mẫu, nên nghiên cứu mang tính mô tả và chưa có đủ power cho kết luận thống kê mạnh. Các mutant được chọn có chủ đích thay vì lấy mẫu ngẫu nhiên từ quần thể lỗi thực tế.
+
+\textbf{Reliability.} Thí nghiệm phụ thuộc vào browser, driver và môi trường. Nhóm giảm rủi ro bằng runner dùng chung, chạy headless, chặn lượt có lỗi hạ tầng khỏi quy tắc killed và lưu JUnit/log cho từng lượt.
+
+\section{Kết luận và hướng phát triển}
+\label{sec:conclusion}
+
+Trong controlled benchmark pilot này, kỹ thuật thiết kế test ảnh hưởng rõ đến loại lỗi được phát hiện. EP mạnh nhất với Partition defects (83,33\%), BVA đạt 100\% Boundary DDR và DTT đạt 100\% Decision-rule DDR. EP có overall DDR cao nhất (55,56\%) và efficiency cao nhất (0,3333), nhưng không kỹ thuật nào riêng lẻ phát hiện quá 10/18 mutant. Kết hợp cả ba đạt 18/18 mutant, cho thấy EP, BVA và DTT bổ sung cho nhau trong kiểm thử web-form business logic.
+
+Hướng phát triển gồm mở rộng số ứng dụng và số form, sử dụng lỗi thực tế bên cạnh mutant, để người khác độc lập thiết kế test/mutant nhằm giảm thiên lệch, đo thêm thời gian thiết kế và thực thi, chạy nhiều trình duyệt, và áp dụng phân tích thống kê trên tập benchmark lớn hơn.
+
+\section*{Tính tái lập và dữ liệu nghiên cứu}
+
+Gói source code nộp kèm chứa: đặc tả business rules; Frozen v1.0 với 110 test case; golden application; 18 mutant; Selenium runner; script sinh/xác minh mutant; script chạy thí nghiệm; mutation matrix; metrics; 57 báo cáo JUnit và log. Các lệnh tái lập được mô tả trong \texttt{README\_SOURCE.md}. Mã nguồn tham khảo cũng được quản lý tại \url{https://github.com/vthong272/miniforms-testing-lab}.
+
+\bibliographystyle{splncs04}
+\bibliography{references}
+
+\end{document}
